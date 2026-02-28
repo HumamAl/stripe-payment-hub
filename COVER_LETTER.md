@@ -2,7 +2,7 @@ Hi,
 
 Recently built a creator platform with end-to-end Stripe Connect split payments — from payment intent creation to creator payout. Adapted the approach for your payment gateway integration:
 
-{VERCEL_URL}
+https://stripe-payment-hub.vercel.app
 
 The demo covers payment authorization and capture, webhook handling for transaction events, and PCI DSS-compliant flows — the pieces that typically get messy in a first Stripe integration.
 
