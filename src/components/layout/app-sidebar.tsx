@@ -13,6 +13,10 @@ import {
   User,
   ArrowRight,
   Github,
+  ArrowLeftRight,
+  Webhook,
+  CreditCard,
+  ShieldCheck,
 } from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -23,9 +27,11 @@ import {
 // ═══════════════════════════════════════════════════════════════════════════
 
 const navItems = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  // Dashboard Builder agent: add 3-5 feature page nav items here.
-  // Example: { href: "/orders", label: "Orders", icon: ShoppingCart },
+  { href: "/", label: "Payment Overview", icon: LayoutDashboard },
+  { href: "/transactions", label: "Transactions", icon: ArrowLeftRight },
+  { href: "/webhooks", label: "Webhooks", icon: Webhook },
+  { href: "/payment-methods", label: "Payment Methods", icon: CreditCard },
+  { href: "/compliance", label: "Compliance", icon: ShieldCheck },
 ];
 
 function SidebarLogo({ collapsed }: { collapsed: boolean }) {

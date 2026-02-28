@@ -106,13 +106,12 @@
   --surface-active: oklch(0.94 0 0);
 
   /* ── Primary Color ───────────────────────────────────────────
-     !! OVERRIDE REQUIRED — Layout Builder must replace --primary and
-        --primary-h with domain-appropriate oklch values.
-        See references/design-system.md for the 14-domain color table.
-        QA rejects builds where --primary stays oklch(0.205 0 0). !! */
-  --primary: oklch(0.205 0 0);
+     AESTHETIC: linear / DOMAIN: finance
+     Emerald oklch(0.52 0.15 160) — finance-standard, restrained chroma
+     signals professional credibility. Primary-h extracted as 160.      */
+  --primary: oklch(0.52 0.15 160);
   --primary-foreground: oklch(0.985 0 0);
-  --primary-h: 270; /* Integer hue extracted from --primary */
+  --primary-h: 160; /* Integer hue extracted from --primary */
 
   /* ── Derived Color Tokens ────────────────────────────────── */
   --section-dark: oklch(0.10 0.02 var(--primary-h));
@@ -120,7 +119,8 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
+  /* Accent: teal complement at hue 180, slightly shifted from primary */
+  --accent: oklch(0.94 0.04 160);
   --accent-foreground: oklch(0.205 0 0);
 
   /* ── Semantic Colors ─────────────────────────────────────── */
@@ -133,27 +133,28 @@
   /* ── Borders & Inputs ────────────────────────────────────── */
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: oklch(0.52 0.15 160);   /* Matches --primary (emerald) */
 
   /* ── Chart Colors ────────────────────────────────────────────
-     Layout Builder harmonizes to primary hue. See design-system.md. */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+     Harmonized to emerald primary hue (160). Finance palette:
+     emerald primary → teal → forest → sage → warm amber accent.    */
+  --chart-1: oklch(0.52 0.15 160);   /* Emerald — primary */
+  --chart-2: oklch(0.60 0.13 180);   /* Teal — complementary */
+  --chart-3: oklch(0.45 0.12 145);   /* Forest — deeper green */
+  --chart-4: oklch(0.65 0.10 150);   /* Sage — lighter green */
+  --chart-5: oklch(0.72 0.14 90);    /* Warm amber — accent contrast */
 
   /* ── Sidebar Colors ──────────────────────────────────────────
-     After color override: --sidebar-primary and --sidebar-ring
-     should match --primary.                                     */
+     sidebar-primary and sidebar-ring match --primary (emerald).
+     Sidebar bg stays white per linear aesthetic — clean, precise.  */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary: oklch(0.52 0.15 160);   /* Matches --primary */
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: oklch(0.52 0.15 160);      /* Matches --primary */
 
   /* ── Surface / Card Tokens ───────────────────────────────────
      Driven by [data-theme] aesthetic — not overridden per domain.
@@ -965,6 +966,17 @@
     box-shadow: 2px 2px 0 oklch(0.10 0 0);
   }
 
+}
+
+/* ── Dashboard micro-interaction keyframes ─────────────────── */
+@keyframes fade-up-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up-in {
+  animation-name: fade-up-in;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
 }
 
 /* ── Frame utility classes ─────────────────────────────────── */
